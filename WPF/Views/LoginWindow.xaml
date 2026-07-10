@@ -149,20 +149,20 @@
             <StackPanel Grid.Row="2" VerticalAlignment="Center">
                 <!-- Username -->
                 <TextBlock Text="Username" FontSize="13" FontWeight="SemiBold" Foreground="#495057" Margin="0,0,0,6"/>
-                <TextBox x:Name="txtUsername" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ModernTextBox}" Height="38" Margin="0,0,0,18" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="txtUsername" Text="{Binding LoginForm.Username, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ModernTextBox}" Height="38" Margin="0,0,0,18" VerticalContentAlignment="Center"/>
 
                 <!-- Password -->
                 <TextBlock Text="Password" FontSize="13" FontWeight="SemiBold" Foreground="#495057" Margin="0,0,0,6"/>
                 <Grid Margin="0,0,0,10">
-                    <PasswordBox x:Name="txtPassword" Style="{StaticResource ModernPasswordBox}" Height="38" VerticalContentAlignment="Center" Visibility="{Binding PasswordVisibility}" PasswordChanged="PasswordBox_PasswordChanged"/>
-                    <TextBox x:Name="txtPasswordPlain" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ModernTextBox}" Height="38" VerticalContentAlignment="Center" Visibility="{Binding PasswordPlainVisibility}"/>
+                    <PasswordBox x:Name="txtPassword" Style="{StaticResource ModernPasswordBox}" Height="38" VerticalContentAlignment="Center" Visibility="{Binding LoginForm.PasswordVisibility}" PasswordChanged="PasswordBox_PasswordChanged"/>
+                    <TextBox x:Name="txtPasswordPlain" Text="{Binding LoginForm.Password, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ModernTextBox}" Height="38" VerticalContentAlignment="Center" Visibility="{Binding LoginForm.PasswordPlainVisibility}"/>
                 </Grid>
 
                 <!-- Show Password Checkbox -->
-                <CheckBox x:Name="chkShowPassword" IsChecked="{Binding IsShowPassword, Mode=TwoWay}" Content="Show Password" FontSize="12.5" Foreground="#6c757d" Margin="0,0,0,20"/>
+                <CheckBox x:Name="chkShowPassword" IsChecked="{Binding LoginForm.IsShowPassword, Mode=TwoWay}" Content="Show Password" FontSize="12.5" Foreground="#6c757d" Margin="0,0,0,20"/>
 
                 <!-- Status Message -->
-                <TextBlock x:Name="lblStatus" Text="{Binding ErrorMessage}" Foreground="{Binding ErrorColor}" FontSize="13" TextAlignment="Center" Margin="0,0,0,15" TextWrapping="Wrap"/>
+                <TextBlock x:Name="lblStatus" Text="{Binding LoginForm.ErrorMessage}" Foreground="{Binding LoginForm.ErrorColor}" FontSize="13" TextAlignment="Center" Margin="0,0,0,15" TextWrapping="Wrap"/>
 
                 <!-- Login Button -->
                 <Button x:Name="btnLogin" Command="{Binding LoginCommand}" Content="Login" Style="{StaticResource ModernButton}" Margin="0,0,0,10"/>

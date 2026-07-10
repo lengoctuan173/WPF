@@ -1,18 +1,16 @@
 using System;
 using System.Collections.ObjectModel;
-using System.Data;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using Dapper;
-using Microsoft.Data.SqlClient;
 using WPF.Models;
 using WPF.Services;
 using WPF.ViewModels.Forms;
 
 namespace WPF.ViewModels
 {
-    public class HomeViewModel : ViewModelBase
+    public class EmployeeViewModel : ViewModelBase
     {
         private ObservableCollection<Employee> _employees = new();
         private Employee? _selectedEmployee;
@@ -60,37 +58,34 @@ namespace WPF.ViewModels
         public ICommand LogoutCommand { get; }
 
         private readonly IWindowService _windowService;
+        private readonly IEmployeeService _employeeService;
 
-        public HomeViewModel(IWindowService windowService)
+        public EmployeeViewModel(IWindowService windowService, IEmployeeService employeeService)
         {
-            _windowService = windowService;
-            AddCommand = new RelayCommand(ExecuteAdd);
-            UpdateCommand = new RelayCommand(ExecuteUpdate);
-            DeleteCommand = new RelayCommand(ExecuteDelete);
+            _windowService = windowService ?? throw new ArgumentNullException(nameof(windowService));
+            _employeeService = employeeService ?? throw new ArgumentNullException(nameof(employeeService));
+
+            AddCommand = new RelayCommand(async () => await ExecuteAddAsync());
+            UpdateCommand = new RelayCommand(async () => await ExecuteUpdateAsync());
+            DeleteCommand = new RelayCommand(async () => await ExecuteDeleteAsync());
             LogoutCommand = new RelayCommand(ExecuteLogout);
 
-            LoadEmployeeData();
+            _ = LoadEmployeeDataAsync();
         }
 
-        public void LoadEmployeeData()
+        public async Task LoadEmployeeDataAsync()
         {
-            string query = "SELECT Id, EmployeeCode, FirstName, LastName, FullName, " +
-                           "CASE WHEN Gender = 1 THEN 'Male' WHEN Gender = 0 THEN 'Female' ELSE 'Other' END AS Gender " +
-                           "FROM HRMEmployees";
-
             try
             {
-                using (SqlConnection connection = new SqlConnection(AppConfig.ConnectionString))
-                {
-                    var list = connection.Query<Employee>(query);
-                    Employees = new ObservableCollection<Employee>(list);
-                }
+                StatusMessage = "Loading employee list...";
+                var list = await _employeeService.GetAllEmployeesAsync();
+                Employees = new ObservableCollection<Employee>(list);
                 StatusMessage = "Data loaded successfully from HRM database.";
                 StatusColor = Brushes.Gray;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error connecting to database:\n{ex.Message}", "Database Connection Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Error loading employee data:\n{ex.Message}", "Database Connection Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 StatusMessage = "Failed to load employee list. Check database connection settings.";
                 StatusColor = Brushes.Red;
             }
@@ -104,6 +99,7 @@ namespace WPF.ViewModels
                 EmployeeForm.FirstName = SelectedEmployee.FirstName;
                 EmployeeForm.LastName = SelectedEmployee.LastName;
                 EmployeeForm.Gender = SelectedEmployee.Gender;
+                EmployeeForm.FullName = SelectedEmployee.FullName;
             }
             else
             {
@@ -116,7 +112,7 @@ namespace WPF.ViewModels
             EmployeeForm.Clear();
         }
 
-        private void ExecuteAdd()
+        private async Task ExecuteAddAsync()
         {
             string code = EmployeeForm.EmployeeCode.Trim();
             string first = EmployeeForm.FirstName.Trim();
@@ -130,28 +126,28 @@ namespace WPF.ViewModels
                 return;
             }
 
-            string query = "INSERT INTO HRMEmployees (EmployeeCode, FirstName, LastName, FullName, Gender) VALUES (@EmployeeCode, @FirstName, @LastName, @FullName, @Gender)";
+            var newEmployee = new Employee
+            {
+                EmployeeCode = code,
+                FirstName = first,
+                LastName = last,
+                FullName = full,
+                Gender = gender
+            };
 
             try
             {
-                bool? dbGender = null;
-                if (gender == "Male") dbGender = true;
-                else if (gender == "Female") dbGender = false;
-
-                using (SqlConnection connection = new SqlConnection(AppConfig.ConnectionString))
+                bool success = await _employeeService.AddEmployeeAsync(newEmployee);
+                if (success)
                 {
-                    connection.Execute(query, new
-                    {
-                        EmployeeCode = code,
-                        FirstName = first,
-                        LastName = last,
-                        FullName = full,
-                        Gender = dbGender
-                    });
+                    MessageBox.Show("Employee record added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    await LoadEmployeeDataAsync();
+                    ClearInputs();
                 }
-                MessageBox.Show("Employee record added successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                LoadEmployeeData();
-                ClearInputs();
+                else
+                {
+                    MessageBox.Show("Failed to add employee record.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -159,7 +155,7 @@ namespace WPF.ViewModels
             }
         }
 
-        private void ExecuteUpdate()
+        private async Task ExecuteUpdateAsync()
         {
             if (SelectedEmployee == null)
             {
@@ -179,29 +175,29 @@ namespace WPF.ViewModels
                 return;
             }
 
-            string query = "UPDATE HRMEmployees SET EmployeeCode = @EmployeeCode, FirstName = @FirstName, LastName = @LastName, FullName = @FullName, Gender = @Gender WHERE Id = @Id";
+            var updatedEmployee = new Employee
+            {
+                Id = SelectedEmployee.Id,
+                EmployeeCode = code,
+                FirstName = first,
+                LastName = last,
+                FullName = full,
+                Gender = gender
+            };
 
             try
             {
-                bool? dbGender = null;
-                if (gender == "Male") dbGender = true;
-                else if (gender == "Female") dbGender = false;
-
-                using (SqlConnection connection = new SqlConnection(AppConfig.ConnectionString))
+                bool success = await _employeeService.UpdateEmployeeAsync(updatedEmployee);
+                if (success)
                 {
-                    connection.Execute(query, new
-                    {
-                        Id = SelectedEmployee.Id,
-                        EmployeeCode = code,
-                        FirstName = first,
-                        LastName = last,
-                        FullName = full,
-                        Gender = dbGender
-                    });
+                    MessageBox.Show("Employee record updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    await LoadEmployeeDataAsync();
+                    ClearInputs();
                 }
-                MessageBox.Show("Employee record updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                LoadEmployeeData();
-                ClearInputs();
+                else
+                {
+                    MessageBox.Show("Failed to update employee record.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -209,7 +205,7 @@ namespace WPF.ViewModels
             }
         }
 
-        private void ExecuteDelete()
+        private async Task ExecuteDeleteAsync()
         {
             if (SelectedEmployee == null)
             {
@@ -220,17 +216,19 @@ namespace WPF.ViewModels
             MessageBoxResult confirm = MessageBox.Show("Are you sure you want to delete this employee record?", "Confirm Deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (confirm == MessageBoxResult.Yes)
             {
-                string query = "DELETE FROM HRMEmployees WHERE Id = @Id";
-
                 try
                 {
-                    using (SqlConnection connection = new SqlConnection(AppConfig.ConnectionString))
+                    bool success = await _employeeService.DeleteEmployeeAsync(SelectedEmployee.Id);
+                    if (success)
                     {
-                        connection.Execute(query, new { Id = SelectedEmployee.Id });
+                        MessageBox.Show("Employee record deleted successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        await LoadEmployeeDataAsync();
+                        ClearInputs();
                     }
-                    MessageBox.Show("Employee record deleted successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    LoadEmployeeData();
-                    ClearInputs();
+                    else
+                    {
+                        MessageBox.Show("Failed to delete employee record.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 catch (Exception ex)
                 {

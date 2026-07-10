@@ -26,7 +26,7 @@ namespace WPF.Views
             if (DataContext is LoginViewModel vm)
             {
                 // Synchronize password changes from PasswordBox to ViewModel
-                vm.Password = txtPassword.Password;
+                vm.LoginForm.Password = txtPassword.Password;
             }
         }
     }

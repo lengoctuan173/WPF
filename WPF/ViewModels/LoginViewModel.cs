@@ -2,56 +2,13 @@ using System;
 using System.Windows.Input;
 using System.Windows.Media;
 using WPF.Services;
+using WPF.ViewModels.Forms;
 
 namespace WPF.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
-        private string _username = string.Empty;
-        private string _password = string.Empty;
-        private string _errorMessage = string.Empty;
-        private Brush _errorColor = Brushes.Red;
-        private bool _isShowPassword;
-
-        public string Username
-        {
-            get => _username;
-            set => SetProperty(ref _username, value);
-        }
-
-        public string Password
-        {
-            get => _password;
-            set => SetProperty(ref _password, value);
-        }
-
-        public string ErrorMessage
-        {
-            get => _errorMessage;
-            set => SetProperty(ref _errorMessage, value);
-        }
-
-        public Brush ErrorColor
-        {
-            get => _errorColor;
-            set => SetProperty(ref _errorColor, value);
-        }
-
-        public bool IsShowPassword
-        {
-            get => _isShowPassword;
-            set
-            {
-                if (SetProperty(ref _isShowPassword, value))
-                {
-                    OnPropertyChanged(nameof(PasswordVisibility));
-                    OnPropertyChanged(nameof(PasswordPlainVisibility));
-                }
-            }
-        }
-
-        public System.Windows.Visibility PasswordVisibility => IsShowPassword ? System.Windows.Visibility.Collapsed : System.Windows.Visibility.Visible;
-        public System.Windows.Visibility PasswordPlainVisibility => IsShowPassword ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
+        public LoginFormViewModel LoginForm { get; } = new();
 
         public ICommand LoginCommand { get; }
         public ICommand ExitCommand { get; }
@@ -67,40 +24,39 @@ namespace WPF.ViewModels
 
         private void ExecuteLogin()
         {
-            ErrorMessage = string.Empty;
+            LoginForm.ErrorMessage = string.Empty;
 
-            if (string.IsNullOrEmpty(Username))
+            if (string.IsNullOrEmpty(LoginForm.Username))
             {
-                ErrorColor = new SolidColorBrush(Color.FromRgb(220, 53, 69));
-                ErrorMessage = "Please enter your username.";
+                LoginForm.ErrorColor = new SolidColorBrush(Color.FromRgb(220, 53, 69));
+                LoginForm.ErrorMessage = "Please enter your username.";
                 return;
             }
 
-            if (string.IsNullOrEmpty(Password))
+            if (string.IsNullOrEmpty(LoginForm.Password))
             {
-                ErrorColor = new SolidColorBrush(Color.FromRgb(220, 53, 69));
-                ErrorMessage = "Please enter your password.";
+                LoginForm.ErrorColor = new SolidColorBrush(Color.FromRgb(220, 53, 69));
+                LoginForm.ErrorMessage = "Please enter your password.";
                 return;
             }
 
-            if (Username == "admin" && Password == "admin123")
+            if (LoginForm.Username == "admin" && LoginForm.Password == "123456")
             {
-                ErrorColor = new SolidColorBrush(Color.FromRgb(40, 167, 69));
-                ErrorMessage = "Login successful!";
+                LoginForm.ErrorColor = new SolidColorBrush(Color.FromRgb(40, 167, 69));
+                LoginForm.ErrorMessage = "Login successful!";
 
                 System.Windows.MessageBox.Show("Welcome back, Admin!", "Login Successful", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
 
-                _windowService.ShowHome();
+                _windowService.ShowEmployee();
 
                 // Clear credentials for security when hidden
-                Password = string.Empty;
-                ErrorMessage = string.Empty;
+                LoginForm.Clear();
             }
             else
             {
-                ErrorColor = new SolidColorBrush(Color.FromRgb(220, 53, 69));
-                ErrorMessage = "Invalid username or password.";
-                Password = string.Empty;
+                LoginForm.ErrorColor = new SolidColorBrush(Color.FromRgb(220, 53, 69));
+                LoginForm.ErrorMessage = "Invalid username or password.";
+                LoginForm.Password = string.Empty;
             }
         }
 

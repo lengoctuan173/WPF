@@ -53,11 +53,11 @@ d:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\refint\WPF.dll
 d:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\WPF.pdb
 d:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\WPF.genruntimeconfig.cache
 d:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\ref\WPF.dll
-d:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\Views\HomeWindow.baml
-d:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\Views\HomeWindow.g.cs
 d:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\Views\LoginWindow.g.cs
 d:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\WPF_MarkupCompile.lref
 d:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\Views\LoginWindow.baml
 D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\Microsoft.Extensions.DependencyInjection.dll
 D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\Dapper.dll
 D:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\WPF.sourcelink.json
+D:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\Views\EmployeeWindow.baml
+D:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\Views\EmployeeWindow.g.cs

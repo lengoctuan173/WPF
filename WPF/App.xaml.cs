@@ -1,6 +1,7 @@
 using System;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
+using WPF.Repositories;
 using WPF.Services;
 using WPF.ViewModels;
 using WPF.Views;
@@ -22,14 +23,16 @@ namespace WPF
 
             // Register Services
             services.AddSingleton<IWindowService, WindowService>();
+            services.AddSingleton<IEmployeeRepository>(sp => new EmployeeRepository(AppConfig.ConnectionString));
+            services.AddTransient<IEmployeeService, EmployeeService>();
 
             // Register ViewModels
             services.AddTransient<LoginViewModel>();
-            services.AddTransient<HomeViewModel>();
+            services.AddTransient<EmployeeViewModel>();
 
             // Register Windows
             services.AddTransient<LoginWindow>();
-            services.AddTransient<HomeWindow>();
+            services.AddTransient<EmployeeWindow>();
 
             ServiceProvider = services.BuildServiceProvider();
 
