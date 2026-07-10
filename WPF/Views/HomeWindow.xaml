@@ -183,23 +183,23 @@
                     <StackPanel Grid.Row="1" VerticalAlignment="Top">
                         <!-- Employee Code -->
                         <TextBlock Text="Employee Code" FontSize="12" FontWeight="SemiBold" Foreground="#6c757d" Margin="0,0,0,5"/>
-                        <TextBox x:Name="txtEmployeeCode" Text="{Binding EmployeeCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ModernTextBox}" Margin="0,0,0,15"/>
+                        <TextBox x:Name="txtEmployeeCode" Text="{Binding EmployeeForm.EmployeeCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ModernTextBox}" Margin="0,0,0,15"/>
 
                         <!-- Last Name -->
                         <TextBlock Text="Last Name" FontSize="12" FontWeight="SemiBold" Foreground="#6c757d" Margin="0,0,0,5"/>
-                        <TextBox x:Name="txtLastName" Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ModernTextBox}" Margin="0,0,0,15"/>
+                        <TextBox x:Name="txtLastName" Text="{Binding EmployeeForm.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ModernTextBox}" Margin="0,0,0,15"/>
 
                         <!-- First Name -->
                         <TextBlock Text="First Name" FontSize="12" FontWeight="SemiBold" Foreground="#6c757d" Margin="0,0,0,5"/>
-                        <TextBox x:Name="txtFirstName" Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ModernTextBox}" Margin="0,0,0,15"/>
+                        <TextBox x:Name="txtFirstName" Text="{Binding EmployeeForm.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ModernTextBox}" Margin="0,0,0,15"/>
 
                         <!-- Full Name -->
                         <TextBlock Text="Full Name (Auto-Generated)" FontSize="12" FontWeight="SemiBold" Foreground="#6c757d" Margin="0,0,0,5"/>
-                        <TextBox x:Name="txtFullName" Text="{Binding FullName, Mode=OneWay}" Style="{StaticResource ModernTextBox}" IsReadOnly="True" Background="#f8f9fa" Foreground="#495057" Margin="0,0,0,15"/>
+                        <TextBox x:Name="txtFullName" Text="{Binding EmployeeForm.FullName, Mode=OneWay}" Style="{StaticResource ModernTextBox}" IsReadOnly="True" Background="#f8f9fa" Foreground="#495057" Margin="0,0,0,15"/>
 
                         <!-- Gender -->
                         <TextBlock Text="Gender" FontSize="12" FontWeight="SemiBold" Foreground="#6c757d" Margin="0,0,0,5"/>
-                        <ComboBox x:Name="cboGender" ItemsSource="{Binding Genders}" SelectedValue="{Binding Gender, Mode=TwoWay}" Style="{StaticResource ModernComboBox}" Margin="0,0,0,20"/>
+                        <ComboBox x:Name="cboGender" ItemsSource="{Binding Genders}" SelectedValue="{Binding EmployeeForm.Gender, Mode=TwoWay}" Style="{StaticResource ModernComboBox}" Margin="0,0,0,20"/>
                     </StackPanel>
 
                     <!-- Buttons Panel -->

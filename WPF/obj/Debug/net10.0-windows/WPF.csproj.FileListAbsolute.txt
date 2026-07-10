@@ -60,3 +60,4 @@ d:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\WPF_MarkupCompile.lref
 d:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\Views\LoginWindow.baml
 D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\Microsoft.Extensions.DependencyInjection.dll
 D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\Dapper.dll
+D:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\WPF.sourcelink.json

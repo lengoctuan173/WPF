@@ -1,0 +1,120 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\SOURCE\\WPF\\WPF\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{68245C1E-B56E-9570-FC88-BA8BDDA8077B}|WPF\\WPF.csproj|d:\\source\\wpf\\wpf\\wpf\\viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68245C1E-B56E-9570-FC88-BA8BDDA8077B}|WPF\\WPF.csproj|solutionrelative:wpf\\viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68245C1E-B56E-9570-FC88-BA8BDDA8077B}|WPF\\WPF.csproj|d:\\source\\wpf\\wpf\\wpf\\viewmodels\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68245C1E-B56E-9570-FC88-BA8BDDA8077B}|WPF\\WPF.csproj|solutionrelative:wpf\\viewmodels\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68245C1E-B56E-9570-FC88-BA8BDDA8077B}|WPF\\WPF.csproj|d:\\source\\wpf\\wpf\\wpf\\viewmodels\\viewmodelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68245C1E-B56E-9570-FC88-BA8BDDA8077B}|WPF\\WPF.csproj|solutionrelative:wpf\\viewmodels\\viewmodelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68245C1E-B56E-9570-FC88-BA8BDDA8077B}|WPF\\WPF.csproj|d:\\source\\wpf\\wpf\\wpf\\viewmodels\\forms\\employeeformviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68245C1E-B56E-9570-FC88-BA8BDDA8077B}|WPF\\WPF.csproj|solutionrelative:wpf\\viewmodels\\forms\\employeeformviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68245C1E-B56E-9570-FC88-BA8BDDA8077B}|WPF\\WPF.csproj|d:\\source\\wpf\\wpf\\wpf\\views\\homewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{68245C1E-B56E-9570-FC88-BA8BDDA8077B}|WPF\\WPF.csproj|solutionrelative:wpf\\views\\homewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 83,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EmployeeFormViewModel.cs",
+              "DocumentMoniker": "D:\\SOURCE\\WPF\\WPF\\WPF\\ViewModels\\Forms\\EmployeeFormViewModel.cs",
+              "RelativeDocumentMoniker": "WPF\\ViewModels\\Forms\\EmployeeFormViewModel.cs",
+              "ToolTip": "D:\\SOURCE\\WPF\\WPF\\WPF\\ViewModels\\Forms\\EmployeeFormViewModel.cs",
+              "RelativeToolTip": "WPF\\ViewModels\\Forms\\EmployeeFormViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T14:58:09.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ViewModelBase.cs",
+              "DocumentMoniker": "D:\\SOURCE\\WPF\\WPF\\WPF\\ViewModels\\ViewModelBase.cs",
+              "RelativeDocumentMoniker": "WPF\\ViewModels\\ViewModelBase.cs",
+              "ToolTip": "D:\\SOURCE\\WPF\\WPF\\WPF\\ViewModels\\ViewModelBase.cs",
+              "RelativeToolTip": "WPF\\ViewModels\\ViewModelBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T14:23:25.688Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RelayCommand.cs",
+              "DocumentMoniker": "D:\\SOURCE\\WPF\\WPF\\WPF\\ViewModels\\RelayCommand.cs",
+              "RelativeDocumentMoniker": "WPF\\ViewModels\\RelayCommand.cs",
+              "ToolTip": "D:\\SOURCE\\WPF\\WPF\\WPF\\ViewModels\\RelayCommand.cs",
+              "RelativeToolTip": "WPF\\ViewModels\\RelayCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T14:23:23.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeViewModel.cs",
+              "DocumentMoniker": "D:\\SOURCE\\WPF\\WPF\\WPF\\ViewModels\\HomeViewModel.cs",
+              "RelativeDocumentMoniker": "WPF\\ViewModels\\HomeViewModel.cs",
+              "ToolTip": "D:\\SOURCE\\WPF\\WPF\\WPF\\ViewModels\\HomeViewModel.cs",
+              "RelativeToolTip": "WPF\\ViewModels\\HomeViewModel.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAxwD0AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-10T13:52:54.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HomeWindow.xaml",
+              "DocumentMoniker": "D:\\SOURCE\\WPF\\WPF\\WPF\\Views\\HomeWindow.xaml",
+              "RelativeDocumentMoniker": "WPF\\Views\\HomeWindow.xaml",
+              "ToolTip": "D:\\SOURCE\\WPF\\WPF\\WPF\\Views\\HomeWindow.xaml",
+              "RelativeToolTip": "WPF\\Views\\HomeWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-07-10T13:30:18.469Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

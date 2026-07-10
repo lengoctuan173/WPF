@@ -8,6 +8,7 @@ using Dapper;
 using Microsoft.Data.SqlClient;
 using WPF.Models;
 using WPF.Services;
+using WPF.ViewModels.Forms;
 
 namespace WPF.ViewModels
 {
@@ -16,12 +17,6 @@ namespace WPF.ViewModels
         private ObservableCollection<Employee> _employees = new();
         private Employee? _selectedEmployee;
         
-        private string _employeeCode = string.Empty;
-        private string _firstName = string.Empty;
-        private string _lastName = string.Empty;
-        private string _fullName = string.Empty;
-        private string _gender = string.Empty;
-
         private string _statusMessage = "Connection status: Ready";
         private Brush _statusColor = Brushes.Gray;
 
@@ -43,47 +38,7 @@ namespace WPF.ViewModels
             }
         }
 
-        public string EmployeeCode
-        {
-            get => _employeeCode;
-            set => SetProperty(ref _employeeCode, value);
-        }
-
-        public string FirstName
-        {
-            get => _firstName;
-            set
-            {
-                if (SetProperty(ref _firstName, value))
-                {
-                    UpdateFullName();
-                }
-            }
-        }
-
-        public string LastName
-        {
-            get => _lastName;
-            set
-            {
-                if (SetProperty(ref _lastName, value))
-                {
-                    UpdateFullName();
-                }
-            }
-        }
-
-        public string FullName
-        {
-            get => _fullName;
-            set => SetProperty(ref _fullName, value);
-        }
-
-        public string Gender
-        {
-            get => _gender;
-            set => SetProperty(ref _gender, value);
-        }
+        public EmployeeFormViewModel EmployeeForm { get; } = new();
 
         public ObservableCollection<string> Genders { get; } = new() { "Male", "Female", "Other" };
 
@@ -145,10 +100,10 @@ namespace WPF.ViewModels
         {
             if (SelectedEmployee != null)
             {
-                EmployeeCode = SelectedEmployee.EmployeeCode;
-                FirstName = SelectedEmployee.FirstName;
-                LastName = SelectedEmployee.LastName;
-                Gender = SelectedEmployee.Gender;
+                EmployeeForm.EmployeeCode = SelectedEmployee.EmployeeCode;
+                EmployeeForm.FirstName = SelectedEmployee.FirstName;
+                EmployeeForm.LastName = SelectedEmployee.LastName;
+                EmployeeForm.Gender = SelectedEmployee.Gender;
             }
             else
             {
@@ -156,27 +111,18 @@ namespace WPF.ViewModels
             }
         }
 
-        private void UpdateFullName()
-        {
-            FullName = $"{LastName.Trim()} {FirstName.Trim()}".Trim();
-        }
-
         private void ClearInputs()
         {
-            EmployeeCode = string.Empty;
-            FirstName = string.Empty;
-            LastName = string.Empty;
-            FullName = string.Empty;
-            Gender = string.Empty;
+            EmployeeForm.Clear();
         }
 
         private void ExecuteAdd()
         {
-            string code = EmployeeCode.Trim();
-            string first = FirstName.Trim();
-            string last = LastName.Trim();
-            string full = FullName.Trim();
-            string gender = Gender;
+            string code = EmployeeForm.EmployeeCode.Trim();
+            string first = EmployeeForm.FirstName.Trim();
+            string last = EmployeeForm.LastName.Trim();
+            string full = EmployeeForm.FullName.Trim();
+            string gender = EmployeeForm.Gender;
 
             if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(first) || string.IsNullOrEmpty(last))
             {
@@ -221,11 +167,11 @@ namespace WPF.ViewModels
                 return;
             }
 
-            string code = EmployeeCode.Trim();
-            string first = FirstName.Trim();
-            string last = LastName.Trim();
-            string full = FullName.Trim();
-            string gender = Gender;
+            string code = EmployeeForm.EmployeeCode.Trim();
+            string first = EmployeeForm.FirstName.Trim();
+            string last = EmployeeForm.LastName.Trim();
+            string full = EmployeeForm.FullName.Trim();
+            string gender = EmployeeForm.Gender;
 
             if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(first) || string.IsNullOrEmpty(last))
             {
