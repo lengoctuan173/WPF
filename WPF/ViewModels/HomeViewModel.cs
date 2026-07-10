@@ -40,7 +40,7 @@ namespace WPF.ViewModels
 
         public EmployeeFormViewModel EmployeeForm { get; } = new();
 
-        public ObservableCollection<string> Genders { get; } = new() { "Male", "Female", "Other" };
+        public ObservableCollection<string> Genders { get; } = new() { "Male", "Female" };
 
         public string StatusMessage
         {
