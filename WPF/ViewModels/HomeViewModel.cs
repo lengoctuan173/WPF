@@ -17,7 +17,7 @@ namespace WPF.ViewModels
         private ObservableCollection<Employee> _employees = new();
         private Employee? _selectedEmployee;
         
-        private string _statusMessage = "Connection status: Ready";
+        private string _statusMessage = "Connection status: Ready OK";
         private Brush _statusColor = Brushes.Gray;
 
         public ObservableCollection<Employee> Employees
