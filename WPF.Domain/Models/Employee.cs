@@ -1,4 +1,4 @@
-namespace WPF.Models
+namespace WPF.Domain.Models
 {
     public class Employee
     {
@@ -7,6 +7,6 @@ namespace WPF.Models
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string FullName { get; set; } = string.Empty;
-        public string Gender { get; set; } = string.Empty;
+        public bool? Gender { get; set; }
     }
 }

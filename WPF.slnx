@@ -1,3 +1,6 @@
 <Solution>
   <Project Path="WPF/WPF.csproj" />
+  <Project Path="WPF.Domain/WPF.Domain.csproj" />
+  <Project Path="WPF.Application/WPF.Application.csproj" />
+  <Project Path="WPF.Infrastructure/WPF.Infrastructure.csproj" />
 </Solution>

@@ -1,17 +1,16 @@
 using System;
+using System.IO;
 using System.Windows;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WPF.Repositories;
 using WPF.Services;
-using WPF.ViewModels;
-using WPF.Views;
 
 namespace WPF
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App : System.Windows.Application
     {
         public static IServiceProvider? ServiceProvider { get; private set; }
 
@@ -19,20 +18,20 @@ namespace WPF
         {
             base.OnStartup(e);
 
+            // Setup Configuration (appsettings.json)
+            var configBuilder = new ConfigurationBuilder()
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            IConfiguration configuration = configBuilder.Build();
+
             var services = new ServiceCollection();
 
-            // Register Services
-            services.AddSingleton<IWindowService, WindowService>();
-            services.AddSingleton<IEmployeeRepository>(sp => new EmployeeRepository(AppConfig.ConnectionString));
-            services.AddTransient<IEmployeeService, EmployeeService>();
-
-            // Register ViewModels
-            services.AddTransient<LoginViewModel>();
-            services.AddTransient<EmployeeViewModel>();
-
-            // Register Windows
-            services.AddTransient<LoginWindow>();
-            services.AddTransient<EmployeeWindow>();
+            // Register Configuration and Layer Extensions
+            services.AddSingleton<IConfiguration>(configuration);
+            services.AddDatabase(configuration);
+            services.AddApplicationServices();
+            services.AddViewModels();
+            services.AddViews();
 
             ServiceProvider = services.BuildServiceProvider();
 

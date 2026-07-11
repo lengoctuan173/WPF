@@ -4,31 +4,25 @@ using System.Data;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Data.SqlClient;
-using WPF.Models;
+using WPF.Domain.Models;
+using WPF.Domain.Repositories;
 
-namespace WPF.Repositories
+namespace WPF.Infrastructure.Repositories
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class DapperEmployeeRepository : IEmployeeRepository
     {
-        private readonly string _connectionString;
+        private readonly Func<IDbConnection> _connectionFactory;
 
-        public EmployeeRepository(string connectionString)
+        public DapperEmployeeRepository(Func<IDbConnection> connectionFactory)
         {
-            _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
+            _connectionFactory = connectionFactory ?? throw new ArgumentNullException(nameof(connectionFactory));
         }
 
         public async Task<IEnumerable<Employee>> GetAllEmployeesAsync()
         {
-            const string query = @"
-                SELECT Id, EmployeeCode, FirstName, LastName, FullName, 
-                       CASE 
-                           WHEN Gender = 1 THEN 'Male' 
-                           WHEN Gender = 0 THEN 'Female' 
-                           ELSE 'Other' 
-                       END AS Gender 
-                FROM HRMEmployeesTest";
+            const string query = "SELECT Id, EmployeeCode, FirstName, LastName, FullName, Gender FROM HRMEmployeesTest";
 
-            using var connection = new SqlConnection(_connectionString);
+            using var connection = _connectionFactory();
             return await connection.QueryAsync<Employee>(query);
         }
 
@@ -38,17 +32,13 @@ namespace WPF.Repositories
                 INSERT INTO HRMEmployeesTest (EmployeeCode, FirstName, LastName, Gender) 
                 VALUES (@EmployeeCode, @FirstName, @LastName, @Gender)";
 
-            bool? dbGender = null;
-            if (employee.Gender == "Male") dbGender = true;
-            else if (employee.Gender == "Female") dbGender = false;
-
-            using var connection = new SqlConnection(_connectionString);
+            using var connection = _connectionFactory();
             return await connection.ExecuteAsync(query, new
             {
                 employee.EmployeeCode,
                 employee.FirstName,
                 employee.LastName,
-                Gender = dbGender
+                employee.Gender
             });
         }
 
@@ -62,18 +52,14 @@ namespace WPF.Repositories
                     Gender = @Gender 
                 WHERE Id = @Id";
 
-            bool? dbGender = null;
-            if (employee.Gender == "Male") dbGender = true;
-            else if (employee.Gender == "Female") dbGender = false;
-
-            using var connection = new SqlConnection(_connectionString);
+            using var connection = _connectionFactory();
             return await connection.ExecuteAsync(query, new
             {
                 employee.Id,
                 employee.EmployeeCode,
                 employee.FirstName,
                 employee.LastName,
-                Gender = dbGender
+                employee.Gender
             });
         }
 
@@ -81,7 +67,7 @@ namespace WPF.Repositories
         {
             const string query = "DELETE FROM HRMEmployeesTest WHERE Id = @Id";
 
-            using var connection = new SqlConnection(_connectionString);
+            using var connection = _connectionFactory();
             return await connection.ExecuteAsync(query, new { Id = id });
         }
     }

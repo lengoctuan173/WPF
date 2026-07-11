@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using WPF.Models;
-using WPF.Repositories;
+using WPF.Domain.Models;
+using WPF.Domain.Repositories;
 
-namespace WPF.Services
+namespace WPF.Application.Services
 {
     public class EmployeeService : IEmployeeService
     {

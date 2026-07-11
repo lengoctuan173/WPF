@@ -4,7 +4,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using WPF.Models;
+using WPF.Domain.Models;
+using WPF.Application.Services;
 using WPF.Services;
 using WPF.ViewModels.Forms;
 
@@ -98,7 +99,7 @@ namespace WPF.ViewModels
                 EmployeeForm.EmployeeCode = SelectedEmployee.EmployeeCode;
                 EmployeeForm.FirstName = SelectedEmployee.FirstName;
                 EmployeeForm.LastName = SelectedEmployee.LastName;
-                EmployeeForm.Gender = SelectedEmployee.Gender;
+                EmployeeForm.Gender = SelectedEmployee.Gender == true ? "Male" : (SelectedEmployee.Gender == false ? "Female" : string.Empty);
                 EmployeeForm.FullName = SelectedEmployee.FullName;
             }
             else
@@ -132,7 +133,7 @@ namespace WPF.ViewModels
                 FirstName = first,
                 LastName = last,
                 FullName = full,
-                Gender = gender
+                Gender = gender == "Male" ? true : (gender == "Female" ? false : null)
             };
 
             try
@@ -182,7 +183,7 @@ namespace WPF.ViewModels
                 FirstName = first,
                 LastName = last,
                 FullName = full,
-                Gender = gender
+                Gender = gender == "Male" ? true : (gender == "Female" ? false : null)
             };
 
             try

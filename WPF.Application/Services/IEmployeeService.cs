@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using WPF.Models;
+using WPF.Domain.Models;
 
-namespace WPF.Services
+namespace WPF.Application.Services
 {
     public interface IEmployeeService
     {
