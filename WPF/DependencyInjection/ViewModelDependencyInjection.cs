@@ -9,6 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddTransient<LoginViewModel>();
             services.AddTransient<ProductViewModel>();
+            services.AddTransient<ProductViewModelToolkit>();
             return services;
         }
     }

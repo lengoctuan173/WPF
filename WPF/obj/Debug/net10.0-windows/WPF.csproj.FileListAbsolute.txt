@@ -80,3 +80,4 @@ D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\WPF.Application.pdb
 D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\WPF.Infrastructure.pdb
 D:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\Views\ProductWindow.baml
 D:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\Views\ProductWindow.g.cs
+D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\CommunityToolkit.Mvvm.dll

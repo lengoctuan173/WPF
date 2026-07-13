@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "IgP3P+hdN6c=",
+  "dgSpecHash": "gjFKcoZXp/4=",
   "success": true,
   "projectFilePath": "D:\\SOURCE\\WPF\\WPF\\WPF\\WPF.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Le Tuan\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.2\\communitytoolkit.mvvm.8.4.2.nupkg.sha512",
     "C:\\Users\\Le Tuan\\.nuget\\packages\\dapper\\2.1.79\\dapper.2.1.79.nupkg.sha512",
     "C:\\Users\\Le Tuan\\.nuget\\packages\\microsoft.bcl.cryptography\\9.0.13\\microsoft.bcl.cryptography.9.0.13.nupkg.sha512",
     "C:\\Users\\Le Tuan\\.nuget\\packages\\microsoft.data.sqlclient\\7.0.2\\microsoft.data.sqlclient.7.0.2.nupkg.sha512",

@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v10.0": {
       "WPF/1.0.0": {
         "dependencies": {
+          "CommunityToolkit.Mvvm": "8.4.2",
           "Microsoft.Extensions.Configuration": "10.0.9",
           "Microsoft.Extensions.Configuration.Json": "10.0.9",
           "Microsoft.Extensions.DependencyInjection": "10.0.9",
@@ -17,6 +18,14 @@
         },
         "runtime": {
           "WPF.dll": {}
+        }
+      },
+      "CommunityToolkit.Mvvm/8.4.2": {
+        "runtime": {
+          "lib/net8.0/CommunityToolkit.Mvvm.dll": {
+            "assemblyVersion": "8.4.0.0",
+            "fileVersion": "8.4.2.1"
+          }
         }
       },
       "Dapper/2.1.79": {
@@ -496,6 +505,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "CommunityToolkit.Mvvm/8.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WadCzGEc2U+3e20avRLng4qNtt4zoOGWrdUISqJWrHe3/FSnrYjuM5Sb4yQb09LhkBXrrI4Zt3dLKgRMbItsrg==",
+      "path": "communitytoolkit.mvvm/8.4.2",
+      "hashPath": "communitytoolkit.mvvm.8.4.2.nupkg.sha512"
     },
     "Dapper/2.1.79": {
       "type": "package",
