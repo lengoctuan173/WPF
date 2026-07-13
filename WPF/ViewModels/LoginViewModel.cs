@@ -47,7 +47,7 @@ namespace WPF.ViewModels
 
                 System.Windows.MessageBox.Show("Welcome back, Admin!", "Login Successful", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
 
-                _windowService.ShowEmployee();
+                _windowService.ShowProduct();
 
                 // Clear credentials for security when hidden
                 LoginForm.Clear();

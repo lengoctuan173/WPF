@@ -8,7 +8,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddViewModels(this IServiceCollection services)
         {
             services.AddTransient<LoginViewModel>();
-            services.AddTransient<EmployeeViewModel>();
+            services.AddTransient<ProductViewModel>();
             return services;
         }
     }

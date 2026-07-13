@@ -7,7 +7,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddTransient<IEmployeeService, EmployeeService>();
+            services.AddTransient<IProductService, ProductService>();
             return services;
         }
     }

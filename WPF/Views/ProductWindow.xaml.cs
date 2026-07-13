@@ -3,9 +3,9 @@ using WPF.ViewModels;
 
 namespace WPF.Views
 {
-    public partial class EmployeeWindow : Window
+    public partial class ProductWindow : Window
     {
-        public EmployeeWindow(EmployeeViewModel viewModel)
+        public ProductWindow(ProductViewModel viewModel)
         {
             InitializeComponent();
             this.DataContext = viewModel;

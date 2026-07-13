@@ -15,12 +15,12 @@ namespace WPF.Services
             _serviceProvider = serviceProvider;
         }
 
-        public void ShowEmployee()
+        public void ShowProduct()
         {
-            var employeeWindow = _serviceProvider.GetRequiredService<EmployeeWindow>();
+            var productWindow = _serviceProvider.GetRequiredService<ProductWindow>();
             var oldWindow = _currentWindow;
-            _currentWindow = employeeWindow;
-            employeeWindow.Show();
+            _currentWindow = productWindow;
+            productWindow.Show();
             oldWindow?.Close();
         }
 

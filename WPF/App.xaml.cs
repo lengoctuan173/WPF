@@ -18,6 +18,12 @@ namespace WPF
         {
             base.OnStartup(e);
 
+            // Force WPF bindings to use CurrentCulture for formatting (like StringFormat)
+            FrameworkElement.LanguageProperty.OverrideMetadata(
+                typeof(FrameworkElement),
+                new FrameworkPropertyMetadata(
+                    System.Windows.Markup.XmlLanguage.GetLanguage(System.Globalization.CultureInfo.CurrentCulture.IetfLanguageTag)));
+
             // Setup Configuration (appsettings.json)
             var configBuilder = new ConfigurationBuilder()
                 .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)

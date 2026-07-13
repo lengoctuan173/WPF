@@ -59,8 +59,6 @@ d:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\Views\LoginWindow.baml
 D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\Microsoft.Extensions.DependencyInjection.dll
 D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\Dapper.dll
 D:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\WPF.sourcelink.json
-D:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\Views\EmployeeWindow.baml
-D:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\Views\EmployeeWindow.g.cs
 D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\appsettings.json
 D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\Microsoft.EntityFrameworkCore.dll
 D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -80,3 +78,5 @@ D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\WPF.Infrastructure.dll
 D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\WPF.Domain.pdb
 D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\WPF.Application.pdb
 D:\SOURCE\WPF\WPF\WPF\bin\Debug\net10.0-windows\WPF.Infrastructure.pdb
+D:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\Views\ProductWindow.baml
+D:\SOURCE\WPF\WPF\WPF\obj\Debug\net10.0-windows\Views\ProductWindow.g.cs

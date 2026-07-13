@@ -13,7 +13,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             // Windows
             services.AddTransient<LoginWindow>();
-            services.AddTransient<EmployeeWindow>();
+            services.AddTransient<ProductWindow>();
 
             return services;
         }
