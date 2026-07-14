@@ -1,3 +1,5 @@
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -6,23 +8,19 @@ using WPF.ViewModels.Forms;
 
 namespace WPF.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+    public partial class LoginViewModel : ObservableObject
     {
         public LoginFormViewModel LoginForm { get; } = new();
-
-        public ICommand LoginCommand { get; }
-        public ICommand ExitCommand { get; }
 
         private readonly IWindowService _windowService;
 
         public LoginViewModel(IWindowService windowService)
         {
             _windowService = windowService;
-            LoginCommand = new RelayCommand(ExecuteLogin);
-            ExitCommand = new RelayCommand(ExecuteExit);
         }
 
-        private void ExecuteLogin()
+        [RelayCommand]
+        private void Login()
         {
             LoginForm.ErrorMessage = string.Empty;
 
@@ -60,7 +58,8 @@ namespace WPF.ViewModels
             }
         }
 
-        private void ExecuteExit()
+        [RelayCommand]
+        private void Exit()
         {
             System.Windows.Application.Current.Shutdown();
         }
